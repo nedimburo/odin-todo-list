@@ -2,4 +2,62 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+#content{
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid black;
+    display: grid;
+    grid-template-rows: minmax(100px, 135px) 1fr minmax(50px, 80px);
+}
+
+#header{
+    grid-row: 1 / 2;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-title{
+    font-family: 'Black Ops One', cursive;
+    font-size: 4.2rem;
+    letter-spacing: 5px;
+}
+
+#main-content{
+    grid-row: 2 / 3;
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: minmax(200px, 25%) minmax(600px, 1fr);
+}
+
+#side-bar{
+    grid-column: 1 / 2;
+    border: 2px solid black;
+}
+
+#todo-listing{
+    grid-column: 2 / 3;
+    border: 2px solid black;
+}
+
+#footer{
+    grid-row: 3 / 4;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-item{
+    font-size: 1.6rem;
+}
+
+#author-link{
+    font-size: 1.6rem;
+    text-decoration: none;
 }
