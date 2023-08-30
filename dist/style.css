@@ -43,7 +43,8 @@
     border-right: 4px solid black;
 }
 
-.side-bar-icon{
+.side-bar-icon,
+.add-icon{
     width: 40px;
     height: auto;
 }
@@ -60,7 +61,8 @@
     padding: 4px 80px;
 }
 
-.side-bar-item:hover{
+.side-bar-item:hover,
+.add-button:hover{
     background-color: #cbd5e1;
     border-radius: 5px;
 }
@@ -69,7 +71,7 @@
     border: 2px solid black;
 }
 
-#todo-listing{
+#todo-content{
     grid-column: 2 / 3;
     background-color: #e5e7eb;
     display: flex;
@@ -78,11 +80,36 @@
 }
 
 #todo-container{
+    padding: 20px 50px;
     width: 90%;
     height: 90%;
     background-color: white;
     border-radius: 35px;
     box-shadow: 5px 5px 8px gray;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+}
+
+#buttons-container{
+    grid-row: 1 / 2;
+    display: flex;
+    gap: 40px;
+    border-bottom: 2px solid lightgray;
+}
+
+.add-button{
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 0 20px;
+}
+
+#todo-listing{
+    grid-row: 2 / 3;
 }
 
 #footer{
