@@ -88,6 +88,7 @@
     box-shadow: 5px 5px 8px gray;
     display: grid;
     grid-template-rows: 60px 1fr;
+    gap: 5px;
 }
 
 #buttons-container{
@@ -110,6 +111,13 @@
 
 #todo-listing{
     grid-row: 2 / 3;
+}
+
+.input-name-box{
+    grid-row: 2 / 3;
+    width: 100%;
+    padding-left: 15px;
+    font-size: 1.2rem;
 }
 
 #footer{
