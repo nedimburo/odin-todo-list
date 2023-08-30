@@ -9,17 +9,17 @@
 #content{
     width: 100vw;
     height: 100vh;
-    border: 2px solid black;
     display: grid;
     grid-template-rows: minmax(100px, 135px) 1fr minmax(50px, 80px);
 }
 
 #header{
     grid-row: 1 / 2;
-    border: 2px solid black;
+    border-bottom: 4px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fee1b0;
 }
 
 #main-title{
@@ -30,34 +30,82 @@
 
 #main-content{
     grid-row: 2 / 3;
-    border: 2px solid black;
     display: grid;
     grid-template-columns: minmax(200px, 25%) minmax(600px, 1fr);
 }
 
 #side-bar{
     grid-column: 1 / 2;
+    padding: 30px;
+    display: grid;
+    grid-template-rows: repeat(5, 50px) 1fr;
+    gap: 10px;
+    border-right: 4px solid black;
+}
+
+.side-bar-icon{
+    width: 40px;
+    height: auto;
+}
+
+.side-bar-item{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 4px 80px;
+}
+
+.side-bar-item:hover{
+    background-color: #cbd5e1;
+    border-radius: 5px;
+}
+
+#projects-container{
     border: 2px solid black;
 }
 
 #todo-listing{
     grid-column: 2 / 3;
-    border: 2px solid black;
+    background-color: #e5e7eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#todo-container{
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    border-radius: 35px;
+    box-shadow: 5px 5px 8px gray;
 }
 
 #footer{
     grid-row: 3 / 4;
-    border: 2px solid black;
+    border-top: 4px solid black;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: #fee1b0;
 }
 
 .footer-item{
     font-size: 1.6rem;
+    font-weight: 700;
 }
 
 #author-link{
     font-size: 1.6rem;
     text-decoration: none;
+    color: white;
+}
+
+#author-link:hover{
+    text-decoration: underline;
+    color: blue;
 }
