@@ -1,14 +1,27 @@
 const displayController=(()=>{
     let todoMainContainer=document.getElementById("todo-container");
+    let addButtonsContainer=document.getElementById("buttons-container");
     let todoListing=document.getElementById("todo-listing");
     const createInputBox=type=>{
-        todoMainContainer.style.gridTemplateRows="60px 45px 1fr";
-        todoListing.style.gridRow="3 / 4";
+        addButtonsContainer.style.display="none";
+        let inputContainer=document.createElement("div");
+        inputContainer.setAttribute("id", "input-container");
         let inputField=document.createElement("input");
-        inputField.classList.add("input-name-box");
+        inputField.setAttribute("id", "input-name-box");
+        let submitButton=document.createElement("button");
+        let cancelButton=document.createElement("button");
+        submitButton.classList.add("input-field-button");
+        cancelButton.classList.add("input-field-button");
+        submitButton.classList.add("submit");
+        cancelButton.classList.add("cancel");
+        submitButton.textContent="Submit";
+        cancelButton.textContent="Cancel";
         (type=="task") ? inputField.placeholder="Enter task title..." 
                         : inputField.placeholder="Enter project name...";
-        todoMainContainer.appendChild(inputField);
+        inputContainer.appendChild(inputField);
+        inputContainer.appendChild(submitButton);
+        inputContainer.appendChild(cancelButton);
+        todoMainContainer.appendChild(inputContainer);
     };
     return{
         createInputBox,

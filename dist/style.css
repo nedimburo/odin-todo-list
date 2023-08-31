@@ -95,7 +95,6 @@
     grid-row: 1 / 2;
     display: flex;
     gap: 40px;
-    border-bottom: 2px solid lightgray;
 }
 
 .add-button{
@@ -111,13 +110,43 @@
 
 #todo-listing{
     grid-row: 2 / 3;
+    border-top: 2px solid lightgray;
 }
 
-.input-name-box{
-    grid-row: 2 / 3;
-    width: 100%;
+#input-container{
+    grid-row: 1 / 2;
+    display: flex;
+    gap: 10px;
+}
+
+#input-name-box{
+    flex: 4;
+    height: 100%;
     padding-left: 15px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    border: none;
+    border-bottom: 2px solid lightgray;
+}
+
+#input-name-box:focus{
+    outline: none !important;
+    border-bottom: 2px solid #22d3ee;
+}
+
+.input-field-button{
+    flex: 1;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border: 2px solid black;
+}
+
+.submit{
+    background-color: #16a34a;
+}
+
+.cancel{
+    background-color: #dc2626;
 }
 
 #footer{
