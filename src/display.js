@@ -18,10 +18,16 @@ const displayController=(()=>{
         cancelButton.textContent="Cancel";
         (type=="task") ? inputField.placeholder="Enter task title..." 
                         : inputField.placeholder="Enter project name...";
+        cancelButton.addEventListener("click", removeInputBox);
         inputContainer.appendChild(inputField);
         inputContainer.appendChild(submitButton);
         inputContainer.appendChild(cancelButton);
         todoMainContainer.appendChild(inputContainer);
+    };
+    const removeInputBox=()=>{
+        let inputContainer=document.getElementById("input-container");
+        todoMainContainer.removeChild(inputContainer);
+        addButtonsContainer.style.display="flex";
     };
     return{
         createInputBox,
