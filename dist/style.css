@@ -60,8 +60,7 @@
     padding: 4px 80px;
 }
 
-#side-bar button:hover,
-#add-project-button:hover{
+#side-bar button:hover{
     background-color: #cbd5e1;
     border-radius: 5px;
 }
@@ -69,6 +68,11 @@
 #projects-container{
     width: 80%;
     margin: 0 auto;
+}
+
+#add-project-button{
+    background: none;
+    border: none;
 }
 
 #project-input-container{

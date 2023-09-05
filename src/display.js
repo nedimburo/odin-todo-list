@@ -1,6 +1,9 @@
 const displayController=(()=>{
     let projectsContainer=document.getElementById("projects-container");
+    let projectInputContainer=document.getElementById("project-input-container");
+    let addProjectButton=document.getElementById("add-project-button");
     const addProjectInput=()=>{
+        addProjectButton.disabled=true;
         let inputContainer=document.createElement("div");
         let inputField=document.createElement("input");
         let submitButton=document.createElement("button");
@@ -16,6 +19,10 @@ const displayController=(()=>{
         inputField.placeholder="Enter project name...";
         submitImg.src="../dist/icons/check.svg";
         cancelImg.src="../dist/icons/close.svg";
+        cancelButton.addEventListener("click", ()=>{
+            projectsContainer.removeChild(inputContainer);
+            addProjectButton.disabled=false;
+        });
         submitButton.appendChild(submitImg);
         cancelButton.appendChild(cancelImg);
         inputContainer.appendChild(inputField);
