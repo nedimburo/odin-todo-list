@@ -52,6 +52,9 @@ const displayController=(()=>{
             projectContainerItem.classList.add("project-container-item");
             projectButton.classList.add("project-selector-button");
             deleteImg.classList.add("remove-project-button");
+            projectDeleteButton.addEventListener("click", ()=>{
+                storage.removeProject(i);
+            });
             projectDeleteButton.appendChild(deleteImg);
             projectContainerItem.appendChild(projectButton);
             projectContainerItem.appendChild(projectDeleteButton);

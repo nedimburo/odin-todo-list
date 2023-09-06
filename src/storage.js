@@ -28,4 +28,10 @@ export default class Storage{
         let newProject=new Project(newProjectName);
         this.todoContainer.addProject(newProject);
     }
+
+    removeProject(index){
+        this.todoContainer._projects.splice(index, 1);
+        this.storeLocalStorage();
+        location.reload();
+    }
 }
