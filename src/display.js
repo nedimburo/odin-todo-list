@@ -40,14 +40,34 @@ const displayController=(()=>{
         inputContainer.appendChild(cancelButton);
         projectsContainer.appendChild(inputContainer);
     };
+    const generateProjects=()=>{
+        for (let i=0; i<storage.todoContainer._projects.length; i++){
+            let projectContainerItem=document.createElement("div");
+            let projectButton=document.createElement("button");
+            let projectDeleteButton=document.createElement("button");
+            let deleteImg=document.createElement("img");
+            deleteImg.src="../dist/icons/close.svg";
+            projectButton.textContent=storage.todoContainer._projects[i]._title;
+            projectButton.setAttribute("id", storage.todoContainer._projects[i]._title);
+            projectContainerItem.classList.add("project-container-item");
+            projectButton.classList.add("project-selector-button");
+            deleteImg.classList.add("remove-project-button");
+            projectDeleteButton.appendChild(deleteImg);
+            projectContainerItem.appendChild(projectButton);
+            projectContainerItem.appendChild(projectDeleteButton);
+            projectsContainer.appendChild(projectContainerItem);
+        }
+    };
     return{
         addProjectInput,
+        generateProjects,
     }
 })();
 
 export default function initializeWebsite(){
     storage.getLocalStorage();
     console.log(storage.todoContainer);
+    displayController.generateProjects();
     let addProjectButton=document.getElementById("add-project-button");
     addProjectButton.addEventListener("click", displayController.addProjectInput);
 }
