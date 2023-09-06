@@ -1,6 +1,9 @@
+import Storage from "./storage";
+
+let storage=new Storage();
+
 const displayController=(()=>{
     let projectsContainer=document.getElementById("projects-container");
-    let projectInputContainer=document.getElementById("project-input-container");
     let addProjectButton=document.getElementById("add-project-button");
     const addProjectInput=()=>{
         addProjectButton.disabled=true;
@@ -19,6 +22,13 @@ const displayController=(()=>{
         inputField.placeholder="Enter project name...";
         submitImg.src="../dist/icons/check.svg";
         cancelImg.src="../dist/icons/close.svg";
+        submitButton.addEventListener("click", ()=>{
+            storage.addNewProject(inputField.value);
+            projectsContainer.removeChild(inputContainer);
+            addProjectButton.disabled=false;
+            storage.storeLocalStorage();
+            location.reload();
+        });
         cancelButton.addEventListener("click", ()=>{
             projectsContainer.removeChild(inputContainer);
             addProjectButton.disabled=false;
@@ -36,6 +46,8 @@ const displayController=(()=>{
 })();
 
 export default function initializeWebsite(){
+    storage.getLocalStorage();
+    console.log(storage.todoContainer);
     let addProjectButton=document.getElementById("add-project-button");
     addProjectButton.addEventListener("click", displayController.addProjectInput);
 }
