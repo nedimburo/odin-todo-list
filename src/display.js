@@ -82,7 +82,34 @@ const displayController=(()=>{
         addTaskButton.appendChild(addImg);
         addTaskButton.setAttribute("id", "add-task-button");
         addTaskButton.innerHTML+="Add Task";
+        addTaskButton.addEventListener("click", addTaskInput);
         todoContainer.appendChild(addTaskButton);
+    };
+    const addTaskInput=()=>{
+        let addTaskContainer=document.createElement("div");
+        let controlButtonsContainer=document.createElement("div");
+        let submitButton=document.createElement("button");
+        let cancelButton=document.createElement("button");
+        addTaskContainer.setAttribute("id", "add-task-container");
+        let formDesign=`<label>Title:</label>
+                        <input type="text" id="task-title"><br>
+                        <label>Description</label>
+                        <input type="text" id="task-description"><br>
+                        <label>Due Date:</label>
+                        <input type="date" id="task-date"><br>
+                        <label>Priority</label>
+                        <select id="task-priority">
+                            <option value="3">Low</option>
+                            <option value="2">Medium</option>
+                            <option value="1">High</option>
+                        </select>`;
+        addTaskContainer.innerHTML=formDesign;
+        submitButton.textContent="Submit";
+        cancelButton.textContent="Cancel";
+        controlButtonsContainer.appendChild(submitButton);
+        controlButtonsContainer.appendChild(cancelButton);
+        addTaskContainer.appendChild(controlButtonsContainer);
+        todoContainer.appendChild(addTaskContainer);
     };
     return{
         addProjectInput,

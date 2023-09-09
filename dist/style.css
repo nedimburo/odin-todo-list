@@ -170,6 +170,14 @@
     box-shadow: 5px 5px 8px gray;
 }
 
+#add-task-container{
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #fee1b0;
+    box-shadow: 5px 5px 8px gray;
+    padding: 10px;
+}
+
 #footer{
     grid-row: 3 / 4;
     border-top: 4px solid black;
