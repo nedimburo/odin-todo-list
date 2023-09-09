@@ -5,6 +5,7 @@ let storage=new Storage();
 const displayController=(()=>{
     let projectsContainer=document.getElementById("projects-container");
     let addProjectButton=document.getElementById("add-project-button");
+    let todoContainer=document.getElementById("todo-container");
     const addProjectInput=()=>{
         addProjectButton.disabled=true;
         let inputContainer=document.createElement("div");
@@ -61,9 +62,32 @@ const displayController=(()=>{
             projectsContainer.appendChild(projectContainerItem);
         }
     };
+    const generateProjectButtons=()=>{
+        for (let i=0; i<storage._todoContainer._projects.length; i++){
+            let projectButton=document.getElementById(`${storage._todoContainer._projects[i]._title}`);
+            projectButton.addEventListener("click", ()=>{
+                generateTasks(i);
+            });
+        }
+    };
+    const generateTasks=index=>{
+        todoContainer.innerHTML="";
+        addTaskButton();
+    };
+    const addTaskButton=()=>{
+        let addTaskButton=document.createElement("button");
+        let addImg=document.createElement("img");
+        addImg.src="../dist/icons/plus.svg";
+        addImg.classList.add("add-task-icon");
+        addTaskButton.appendChild(addImg);
+        addTaskButton.setAttribute("id", "add-task-button");
+        addTaskButton.innerHTML+="Add Task";
+        todoContainer.appendChild(addTaskButton);
+    };
     return{
         addProjectInput,
         generateProjects,
+        generateProjectButtons,
     }
 })();
 
@@ -71,6 +95,7 @@ export default function initializeWebsite(){
     storage.getLocalStorage();
     console.log(storage.todoContainer);
     displayController.generateProjects();
+    displayController.generateProjectButtons();
     let addProjectButton=document.getElementById("add-project-button");
     addProjectButton.addEventListener("click", displayController.addProjectInput);
 }
