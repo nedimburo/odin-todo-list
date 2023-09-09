@@ -106,6 +106,14 @@ const displayController=(()=>{
         addTaskContainer.innerHTML=formDesign;
         submitButton.textContent="Submit";
         cancelButton.textContent="Cancel";
+        controlButtonsContainer.setAttribute("id", "control-buttons-container");
+        submitButton.classList.add("task-buttons");
+        cancelButton.classList.add("task-buttons");
+        submitButton.classList.add("submit");
+        cancelButton.classList.add("cancel");
+        cancelButton.addEventListener("click", ()=>{
+            todoContainer.removeChild(addTaskContainer);
+        });
         controlButtonsContainer.appendChild(submitButton);
         controlButtonsContainer.appendChild(cancelButton);
         addTaskContainer.appendChild(controlButtonsContainer);
