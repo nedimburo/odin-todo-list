@@ -10,4 +10,8 @@ export default class TodoApp{
     addProject(newProject){
         this.projects.push(newProject);
     }
+
+    addTaskToProject(newTask, targetedProject){
+        this.projects[targetedProject]._tasks.push(newTask);
+    }
 }

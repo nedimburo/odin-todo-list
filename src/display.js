@@ -72,6 +72,7 @@ const displayController=(()=>{
     };
     const generateTasks=index=>{
         todoContainer.innerHTML="";
+        storage._selectedProjectIndex=index;
         addTaskButton();
     };
     const addTaskButton=()=>{
@@ -111,6 +112,16 @@ const displayController=(()=>{
         cancelButton.classList.add("task-buttons");
         submitButton.classList.add("submit");
         cancelButton.classList.add("cancel");
+        submitButton.addEventListener("click", ()=>{
+            let taskData={};
+            taskData.title=document.getElementById("task-title").value;
+            taskData.description=document.getElementById("task-description").value;
+            taskData.dueDate=document.getElementById("task-date").value;
+            taskData.priority=document.getElementById("task-priority").value;
+            storage.addNewTask(taskData);
+            storage.storeLocalStorage();
+            todoContainer.removeChild(addTaskContainer);
+        });
         cancelButton.addEventListener("click", ()=>{
             todoContainer.removeChild(addTaskContainer);
         });
