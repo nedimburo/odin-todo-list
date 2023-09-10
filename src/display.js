@@ -87,19 +87,21 @@ const displayController=(()=>{
         todoContainer.appendChild(addTaskButton);
     };
     const addTaskInput=()=>{
+        let taskButton=document.getElementById("add-task-button");
+        taskButton.disabled=true;
         let addTaskContainer=document.createElement("div");
         let controlButtonsContainer=document.createElement("div");
         let submitButton=document.createElement("button");
         let cancelButton=document.createElement("button");
         addTaskContainer.setAttribute("id", "add-task-container");
-        let formDesign=`<label>Title:</label>
-                        <input type="text" id="task-title"><br>
-                        <label>Description</label>
-                        <input type="text" id="task-description"><br>
-                        <label>Due Date:</label>
-                        <input type="date" id="task-date"><br>
-                        <label>Priority</label>
-                        <select id="task-priority">
+        let formDesign=`<label for="task-title">Title:</label>
+                        <input type="text" id="task-title" class="form-input"><br>
+                        <label for="task-description">Description:</label>
+                        <input type="text" id="task-description" class="form-input"><br>
+                        <label for="task-date">Due Date:</label>
+                        <input type="date" id="task-date" class="form-input"><br>
+                        <label for="task-priority">Priority:</label>
+                        <select id="task-priority" class="form-input">
                             <option value="3">Low</option>
                             <option value="2">Medium</option>
                             <option value="1">High</option>
@@ -120,9 +122,11 @@ const displayController=(()=>{
             taskData.priority=document.getElementById("task-priority").value;
             storage.addNewTask(taskData);
             storage.storeLocalStorage();
+            taskButton.disabled=false;
             todoContainer.removeChild(addTaskContainer);
         });
         cancelButton.addEventListener("click", ()=>{
+            taskButton.disabled=false;
             todoContainer.removeChild(addTaskContainer);
         });
         controlButtonsContainer.appendChild(submitButton);

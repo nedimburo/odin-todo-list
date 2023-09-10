@@ -96,7 +96,8 @@
     font-size: 1.1rem;
 }
 
-#project-input-field:focus{
+#project-input-field:focus,
+.form-input:focus{
     outline: none !important;
     border-bottom: 2px solid #22d3ee;
 }
@@ -168,6 +169,7 @@
     font-size: 1.8rem;
     font-weight: 700;
     box-shadow: 5px 5px 8px gray;
+    margin-bottom: 15px;
 }
 
 #add-task-container{
@@ -176,6 +178,23 @@
     background-color: #fee1b0;
     box-shadow: 5px 5px 8px gray;
     padding: 10px;
+    margin-bottom: 15px;
+}
+
+#add-task-container label{
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.form-input{
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    font-size: 1.4rem;
+    padding-left: 10px;
+    margin-bottom: 10px;
 }
 
 #control-buttons-container{
