@@ -30,7 +30,13 @@ export default class Storage{
 
     addNewProject(newProjectName){
         let newProject=new Project(newProjectName);
-        this.todoContainer.addProject(newProject);
+        if (this.todoContainer.validateProjectTitle(newProjectName)){
+            this.todoContainer.addProject(newProject);
+        }
+        else{
+            alert("Project already exists with the entered title.");
+            return;
+        }
     }
 
     removeProject(index){
