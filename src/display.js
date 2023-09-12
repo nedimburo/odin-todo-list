@@ -87,6 +87,19 @@ const displayController=(()=>{
     const updateTasksList=()=>{
         let taskListContainer=document.createElement("div");
         taskListContainer.setAttribute("id", "task-list-container");
+        for (let i=0; i<storage._todoContainer._projects[storage._selectedProjectIndex]._tasks.length; i++){
+            let taskContainer=document.createElement("div");
+            let taskTitle=document.createElement("div");
+            let taskDate=document.createElement("div");
+            let taskButtonsContainer=document.createElement("div");
+            taskContainer.classList.add("task-container");
+            taskTitle.textContent=storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[i]._title;
+            taskDate.textContent=storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[i]._dueDate;
+            taskContainer.appendChild(taskTitle);
+            taskContainer.appendChild(taskDate);
+            taskContainer.appendChild(taskButtonsContainer);
+            taskListContainer.appendChild(taskContainer);
+        }
         todoContainer.appendChild(taskListContainer);
     };
     const addTaskButton=()=>{
@@ -140,6 +153,7 @@ const displayController=(()=>{
             taskButton.disabled=false;
             todoContainer.removeChild(addTaskContainer);
             toggleClassTodoContainer();
+            updateTasksList();
         });
         cancelButton.addEventListener("click", ()=>{
             taskButton.disabled=false;
