@@ -74,6 +74,20 @@ const displayController=(()=>{
         todoContainer.innerHTML="";
         storage._selectedProjectIndex=index;
         addTaskButton();
+        if (storage._todoContainer._projects[index]._tasks.length==0){
+            let message=document.createElement("h2");
+            message.textContent="There are no assigned tasks in this project.";
+            message.classList.add("task-message");
+            todoContainer.appendChild(message);
+        }
+        else{
+            updateTasksList();
+        }
+    };
+    const updateTasksList=()=>{
+        let taskListContainer=document.createElement("div");
+        taskListContainer.setAttribute("id", "task-list-container");
+        todoContainer.appendChild(taskListContainer);
     };
     const addTaskButton=()=>{
         let addTaskButton=document.createElement("button");
@@ -87,6 +101,7 @@ const displayController=(()=>{
         todoContainer.appendChild(addTaskButton);
     };
     const addTaskInput=()=>{
+        toggleClassTodoContainer();
         let taskButton=document.getElementById("add-task-button");
         taskButton.disabled=true;
         let addTaskContainer=document.createElement("div");
@@ -124,15 +139,21 @@ const displayController=(()=>{
             storage.storeLocalStorage();
             taskButton.disabled=false;
             todoContainer.removeChild(addTaskContainer);
+            toggleClassTodoContainer();
         });
         cancelButton.addEventListener("click", ()=>{
             taskButton.disabled=false;
             todoContainer.removeChild(addTaskContainer);
+            toggleClassTodoContainer();
         });
         controlButtonsContainer.appendChild(submitButton);
         controlButtonsContainer.appendChild(cancelButton);
         addTaskContainer.appendChild(controlButtonsContainer);
         todoContainer.appendChild(addTaskContainer);
+    };
+    const toggleClassTodoContainer=()=>{
+        todoContainer.classList.toggle("todo-container-simple");
+        todoContainer.classList.toggle("todo-container-adding-task");
     };
     return{
         addProjectInput,

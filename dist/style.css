@@ -13,6 +13,8 @@
     grid-template-rows: minmax(100px, 135px) 1fr minmax(50px, 80px);
 }
 
+/* HEADER */
+
 #header{
     grid-row: 1 / 2;
     border-bottom: 4px solid black;
@@ -28,11 +30,15 @@
     letter-spacing: 5px;
 }
 
+/* MAIN PAGE */
+
 #main-content{
     grid-row: 2 / 3;
     display: grid;
     grid-template-columns: minmax(200px, 25%) minmax(600px, 1fr);
 }
+
+/* SIDE BAR AND PROJECTS PART OF PAGE */
 
 #side-bar{
     grid-column: 1 / 2;
@@ -138,6 +144,8 @@
     height: auto;
 }
 
+/* TODO PART OF PAGE */
+
 #todo-content{
     grid-column: 2 / 3;
     background-color: #e5e7eb;
@@ -153,6 +161,16 @@
     background-color: white;
     border-radius: 35px;
     box-shadow: 5px 5px 8px gray;
+}
+
+.todo-container-simple{
+    display: grid;
+    grid-template-rows: 70px 1fr;
+}
+
+.todo-container-adding-task{
+    display: grid;
+    grid-template-rows: 70px 260px 1fr;
 }
 
 #add-task-button{
@@ -179,6 +197,7 @@
     box-shadow: 5px 5px 8px gray;
     padding: 10px;
     margin-bottom: 15px;
+    grid-row: 2 / 3;
 }
 
 #add-task-container label{
@@ -217,6 +236,17 @@
     border: 2px solid black;
     color: black;
 }
+
+.task-message{
+    text-align: center;
+    font-size: 2rem;
+}
+
+#task-list-container{
+    border: 2px solid black;
+}
+
+/* FOOTER */
 
 #footer{
     grid-row: 3 / 4;
