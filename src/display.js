@@ -81,12 +81,18 @@ const displayController=(()=>{
             todoContainer.appendChild(message);
         }
         else{
+            generateTaskListContainer();
             updateTasksList();
         }
     };
-    const updateTasksList=()=>{
-        let taskListContainer=document.createElement("div");
+    const generateTaskListContainer=()=>{
+        let taskListContainer=document.createElement("div")
         taskListContainer.setAttribute("id", "task-list-container");
+        todoContainer.appendChild(taskListContainer);
+    };
+    const updateTasksList=()=>{
+        let taskListContainer=document.getElementById("task-list-container");
+        taskListContainer.innerHTML="";
         for (let i=0; i<storage._todoContainer._projects[storage._selectedProjectIndex]._tasks.length; i++){
             let taskContainer=document.createElement("div");
             let taskTitle=document.createElement("div");
@@ -100,7 +106,6 @@ const displayController=(()=>{
             taskContainer.appendChild(taskButtonsContainer);
             taskListContainer.appendChild(taskContainer);
         }
-        todoContainer.appendChild(taskListContainer);
     };
     const addTaskButton=()=>{
         let addTaskButton=document.createElement("button");
