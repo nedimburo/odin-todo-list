@@ -50,7 +50,8 @@
 }
 
 .side-bar-icon,
-.add-task-icon{
+.add-task-icon,
+.task-control-button{
     width: 40px;
     height: auto;
 }
@@ -127,7 +128,8 @@
     justify-content: space-around;
 }
 
-.project-container-item>button{
+.project-container-item>button,
+.task-control-button{
     background: none;
     border: none;
 }
@@ -254,6 +256,30 @@
     border: 2px solid black;
     border-radius: 10px;
     box-shadow: 2px 2px 5px gray;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 200px;
+}
+
+.task-button-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.task-container-title,
+.task-container-date{
+    align-self: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.task-container-title{
+    padding-left: 15px;
+}
+
+.task-button-container>button>img:hover{
+    background-color: darkgray;
+    border-radius: 50%;
 }
 
 /* FOOTER */
