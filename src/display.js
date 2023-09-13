@@ -20,9 +20,19 @@ const displayController=(()=>{
                 let homeTaskTitle=document.createElement("div");
                 let homeTaskDate=document.createElement("div");
                 let homeTaskProject=document.createElement("div");
+                homeTaskContainer.classList.add("home-task-list-container");
+                if (storage._todoContainer._projects[i]._tasks[j]._priority=="1"){
+                    homeTaskContainer.classList.add("low-priority");
+                }
+                else if(storage._todoContainer._projects[i]._tasks[j]._priority=="2"){
+                    homeTaskContainer.classList.add("medium-priority");
+                }
+                else{
+                    homeTaskContainer.classList.add("high-priority");
+                }
                 homeTaskTitle.textContent=storage.todoContainer._projects[i]._tasks[j]._title;
                 homeTaskDate.textContent=storage.todoContainer._projects[i]._tasks[j]._dueDate;
-                homeTaskProject.textContent=storage.todoContainer._projects[i]._title;
+                homeTaskProject.textContent="Project: "+storage.todoContainer._projects[i]._title;
                 homeTaskContainer.appendChild(homeTaskTitle);
                 homeTaskContainer.appendChild(homeTaskDate);
                 homeTaskContainer.appendChild(homeTaskProject);

@@ -260,13 +260,22 @@
     gap: 10px;
 }
 
-.task-container{
+.task-container,
+.home-task-list-container{
     background-color: #e5e7eb;
     border: 2px solid black;
     border-radius: 10px;
     box-shadow: 2px 2px 5px gray;
     display: grid;
     grid-template-columns: repeat(2, 1fr) 200px;
+}
+
+.home-task-list-container{
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.home-task-list-container div{
+    justify-self: center;
 }
 
 .task-button-container{
@@ -276,7 +285,8 @@
 }
 
 .task-container-title,
-.task-container-date{
+.task-container-date,
+.home-task-list-container div{
     align-self: center;
     font-weight: 700;
     font-size: 1.4rem;
