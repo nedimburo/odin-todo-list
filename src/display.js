@@ -6,6 +6,30 @@ const displayController=(()=>{
     let projectsContainer=document.getElementById("projects-container");
     let addProjectButton=document.getElementById("add-project-button");
     let todoContainer=document.getElementById("todo-container");
+    const loadHome=()=>{
+        todoContainer.innerHTML="";
+        generateTaskListContainer();
+        let taskListContainer=document.getElementById("task-list-container");
+        let homeTitle=document.createElement("h2");
+        homeTitle.textContent="\"All Tasks\"";
+        homeTitle.setAttribute("id", "home-page-title");
+        todoContainer.appendChild(homeTitle);
+        for (let i=0; i<storage.todoContainer._projects.length; i++){
+            for (let j=0; j<storage.todoContainer._projects[i]._tasks.length; j++){
+                let homeTaskContainer=document.createElement("div");
+                let homeTaskTitle=document.createElement("div");
+                let homeTaskDate=document.createElement("div");
+                let homeTaskProject=document.createElement("div");
+                homeTaskTitle.textContent=storage.todoContainer._projects[i]._tasks[j]._title;
+                homeTaskDate.textContent=storage.todoContainer._projects[i]._tasks[j]._dueDate;
+                homeTaskProject.textContent=storage.todoContainer._projects[i]._title;
+                homeTaskContainer.appendChild(homeTaskTitle);
+                homeTaskContainer.appendChild(homeTaskDate);
+                homeTaskContainer.appendChild(homeTaskProject);
+                taskListContainer.appendChild(homeTaskContainer);
+            }
+        }
+    };
     const addProjectInput=()=>{
         addProjectButton.disabled=true;
         let inputContainer=document.createElement("div");
@@ -205,6 +229,7 @@ const displayController=(()=>{
         todoContainer.classList.toggle("todo-container-adding-task");
     };
     return{
+        loadHome,
         addProjectInput,
         generateProjects,
         generateProjectButtons,
@@ -214,8 +239,11 @@ const displayController=(()=>{
 export default function initializeWebsite(){
     storage.getLocalStorage();
     console.log(storage.todoContainer);
+    displayController.loadHome();
     displayController.generateProjects();
     displayController.generateProjectButtons();
+    let homeButton=document.getElementById("home-button");
+    homeButton.addEventListener("click", displayController.loadHome);
     let addProjectButton=document.getElementById("add-project-button");
     addProjectButton.addEventListener("click", displayController.addProjectInput);
 }
