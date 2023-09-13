@@ -108,6 +108,15 @@ const displayController=(()=>{
             editImg.src="../dist/icons/edit.svg";
             deleteImg.src="../dist/icons/close.svg";
             taskContainer.classList.add("task-container");
+            if (storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[i]._priority=="1"){
+                taskContainer.classList.add("low-priority");
+            }
+            else if(storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[i]._priority=="2"){
+                taskContainer.classList.add("medium-priority");
+            }
+            else{
+                taskContainer.classList.add("high-priority");
+            }
             taskTitle.classList.add("task-container-title");
             taskDate.classList.add("task-container-date");
             moreButton.classList.add("task-control-button");

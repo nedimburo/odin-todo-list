@@ -282,6 +282,18 @@
     border-radius: 50%;
 }
 
+.low-priority{
+    border-left: 15px solid #16a34a;
+}
+
+.medium-priority{
+    border-left: 15px solid #facc15;
+}
+
+.high-priority{
+    border-left: 15px solid #ef4444;
+}
+
 /* FOOTER */
 
 #footer{
