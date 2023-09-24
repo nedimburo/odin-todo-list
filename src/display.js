@@ -39,6 +39,12 @@ const displayController=(()=>{
                 taskListContainer.appendChild(homeTaskContainer);
             }
         }
+        if (taskListContainer.childNodes.length==0){
+            let message=document.createElement("h2");
+            message.textContent="All projects are empty. No tasks have been assigned.";
+            message.classList.add("task-message");
+            taskListContainer.appendChild(message);
+        }
     };
     const addProjectInput=()=>{
         addProjectButton.disabled=true;
