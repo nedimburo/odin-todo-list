@@ -162,6 +162,10 @@ const displayController=(()=>{
             moreButton.appendChild(moreImg);
             editButton.appendChild(editImg);
             deleteButton.appendChild(deleteImg);
+            deleteButton.addEventListener("click", ()=>{
+                storage.removeTask(storage._selectedProjectIndex, i);
+                updateTasksList();
+            });
             taskButtonsContainer.appendChild(moreButton);
             taskButtonsContainer.appendChild(editButton);
             taskButtonsContainer.appendChild(deleteButton);

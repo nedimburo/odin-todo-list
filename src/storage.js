@@ -49,4 +49,9 @@ export default class Storage{
         let newTask=new Task(newTaskData.title, newTaskData.description, newTaskData.dueDate, newTaskData.priority);
         this.todoContainer.addTaskToProject(newTask, this.selectedProjectIndex);
     }
+
+    removeTask(projectIndex, taskIndex){
+        this.todoContainer._projects[projectIndex]._tasks.splice(taskIndex, 1);
+        this.storeLocalStorage();
+    }
 }
