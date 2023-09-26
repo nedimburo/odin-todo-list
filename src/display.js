@@ -22,13 +22,13 @@ const displayController=(()=>{
                 let homeTaskProject=document.createElement("div");
                 homeTaskContainer.classList.add("home-task-list-container");
                 if (storage._todoContainer._projects[i]._tasks[j]._priority=="1"){
-                    homeTaskContainer.classList.add("low-priority");
+                    homeTaskContainer.classList.add("high-priority");
                 }
                 else if(storage._todoContainer._projects[i]._tasks[j]._priority=="2"){
                     homeTaskContainer.classList.add("medium-priority");
                 }
                 else{
-                    homeTaskContainer.classList.add("high-priority");
+                    homeTaskContainer.classList.add("low-priority");
                 }
                 homeTaskTitle.textContent=storage.todoContainer._projects[i]._tasks[j]._title;
                 homeTaskDate.textContent=storage.todoContainer._projects[i]._tasks[j]._dueDate;
@@ -113,17 +113,9 @@ const displayController=(()=>{
     const generateTasks=index=>{
         todoContainer.innerHTML="";
         storage._selectedProjectIndex=index;
-        addTaskButton();
-        if (storage._todoContainer._projects[index]._tasks.length==0){
-            let message=document.createElement("h2");
-            message.textContent="There are no assigned tasks in this project.";
-            message.classList.add("task-message");
-            todoContainer.appendChild(message);
-        }
-        else{
-            generateTaskListContainer();
-            updateTasksList();
-        }
+        addTaskButton()
+        generateTaskListContainer();
+        updateTasksList();
     };
     const generateTaskListContainer=()=>{
         let taskListContainer=document.createElement("div")
@@ -149,13 +141,13 @@ const displayController=(()=>{
             deleteImg.src="../dist/icons/close.svg";
             taskContainer.classList.add("task-container");
             if (storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[i]._priority=="1"){
-                taskContainer.classList.add("low-priority");
+                taskContainer.classList.add("high-priority");
             }
             else if(storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[i]._priority=="2"){
                 taskContainer.classList.add("medium-priority");
             }
             else{
-                taskContainer.classList.add("high-priority");
+                taskContainer.classList.add("low-priority");
             }
             taskTitle.classList.add("task-container-title");
             taskDate.classList.add("task-container-date");
@@ -179,6 +171,12 @@ const displayController=(()=>{
             taskContainer.appendChild(taskDate);
             taskContainer.appendChild(taskButtonsContainer);
             taskListContainer.appendChild(taskContainer);
+        }
+        if (taskListContainer.childNodes.length==0){
+            let message=document.createElement("h2");
+            message.textContent="There are no tasks assigned for this project.";
+            message.classList.add("task-message");
+            taskListContainer.appendChild(message);
         }
     };
     const addTaskButton=()=>{
