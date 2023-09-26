@@ -46,6 +46,33 @@ const displayController=(()=>{
             taskListContainer.appendChild(message);
         }
     };
+    const loadToday=()=>{
+        todoContainer.innerHTML="";
+        generateTaskListContainer();
+        let taskListContainer=document.getElementById("task-list-container");
+        let homeTitle=document.createElement("h2");
+        homeTitle.textContent="\"Tasks with due date of Today\"";
+        homeTitle.setAttribute("id", "home-page-title");
+        todoContainer.appendChild(homeTitle);
+    };
+    const loadThisWeek=()=>{
+        todoContainer.innerHTML="";
+        generateTaskListContainer();
+        let taskListContainer=document.getElementById("task-list-container");
+        let homeTitle=document.createElement("h2");
+        homeTitle.textContent="\"Tasks with due date of This week\"";
+        homeTitle.setAttribute("id", "home-page-title");
+        todoContainer.appendChild(homeTitle);
+    };
+    const loadThisMonth=()=>{
+        todoContainer.innerHTML="";
+        generateTaskListContainer();
+        let taskListContainer=document.getElementById("task-list-container");
+        let homeTitle=document.createElement("h2");
+        homeTitle.textContent="\"Tasks with due date of This month\"";
+        homeTitle.setAttribute("id", "home-page-title");
+        todoContainer.appendChild(homeTitle);
+    };
     const addProjectInput=()=>{
         addProjectButton.disabled=true;
         let inputContainer=document.createElement("div");
@@ -248,6 +275,9 @@ const displayController=(()=>{
     };
     return{
         loadHome,
+        loadToday,
+        loadThisWeek,
+        loadThisMonth,
         addProjectInput,
         generateProjects,
         generateProjectButtons,
@@ -262,6 +292,12 @@ export default function initializeWebsite(){
     displayController.generateProjectButtons();
     let homeButton=document.getElementById("home-button");
     homeButton.addEventListener("click", displayController.loadHome);
+    let todayButton=document.getElementById("today-button");
+    todayButton.addEventListener("click", displayController.loadToday);
+    let thisWeekButton=document.getElementById("week-button");
+    thisWeekButton.addEventListener("click", displayController.loadThisWeek);
+    let thisMonthButton=document.getElementById("month-button");
+    thisMonthButton.addEventListener("click", displayController.loadThisMonth);
     let addProjectButton=document.getElementById("add-project-button");
     addProjectButton.addEventListener("click", displayController.addProjectInput);
 }
