@@ -1,5 +1,5 @@
 import Storage from "./storage";
-import { parseISO, differenceInCalendarDays } from "date-fns";
+import { parseISO, differenceInCalendarDays, getMonth } from "date-fns";
 
 let storage=new Storage();
 
@@ -129,6 +129,35 @@ const displayController=(()=>{
         homeTitle.textContent="\"Tasks with due date of This month\"";
         homeTitle.setAttribute("id", "home-page-title");
         todoContainer.appendChild(homeTitle);
+        let currentMonth=getMonth(new Date());
+        for (let i=0; i<storage.todoContainer._projects.length; i++){
+            for (let j=0; j<storage.todoContainer._projects[i]._tasks.length; j++){
+                var tempDate=parseISO(storage.todoContainer._projects[i]._tasks[j]._dueDate);
+                if (currentMonth==getMonth(tempDate)){
+                    let homeTaskContainer=document.createElement("div");
+                    let homeTaskTitle=document.createElement("div");
+                    let homeTaskDate=document.createElement("div");
+                    let homeTaskProject=document.createElement("div");
+                    homeTaskContainer.classList.add("home-task-list-container");
+                    if (storage._todoContainer._projects[i]._tasks[j]._priority=="1"){
+                        homeTaskContainer.classList.add("high-priority");
+                    }
+                    else if(storage._todoContainer._projects[i]._tasks[j]._priority=="2"){
+                        homeTaskContainer.classList.add("medium-priority");
+                    }
+                    else{
+                        homeTaskContainer.classList.add("low-priority");
+                    }
+                    homeTaskTitle.textContent=storage.todoContainer._projects[i]._tasks[j]._title;
+                    homeTaskDate.textContent=storage.todoContainer._projects[i]._tasks[j]._dueDate;
+                    homeTaskProject.textContent="Project: "+storage.todoContainer._projects[i]._title;
+                    homeTaskContainer.appendChild(homeTaskTitle);
+                    homeTaskContainer.appendChild(homeTaskDate);
+                    homeTaskContainer.appendChild(homeTaskProject);
+                    taskListContainer.appendChild(homeTaskContainer);
+                }
+            }
+        }
     };
     const addProjectInput=()=>{
         addProjectButton.disabled=true;
