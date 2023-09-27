@@ -315,7 +315,7 @@ const displayController=(()=>{
         let formDesign=`<label for="task-title">Title:</label>
                         <input type="text" id="task-title" class="form-input"><br>
                         <label for="task-description">Description:</label>
-                        <input type="text" id="task-description" class="form-input"><br>
+                        <input type="text" id="task-description" class="form-input" placeholder="(optional)"><br>
                         <label for="task-date">Due Date:</label>
                         <input type="date" id="task-date" class="form-input"><br>
                         <label for="task-priority">Priority:</label>
@@ -338,6 +338,14 @@ const displayController=(()=>{
             taskData.description=document.getElementById("task-description").value;
             taskData.dueDate=document.getElementById("task-date").value;
             taskData.priority=document.getElementById("task-priority").value;
+            if (taskData.title==""){
+                alert("Please enter the title of the task.");
+                return;
+            }
+            if (taskData.dueDate==""){
+                alert("Please select the due date for the task.");
+                return;
+            }
             storage.addNewTask(taskData);
             storage.storeLocalStorage();
             taskButton.disabled=false;
