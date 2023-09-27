@@ -286,8 +286,14 @@ const displayController=(()=>{
                     descriptionBox.textContent=storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[i]._description;
                 }
                 descriptionBox.classList.add("task-container-description-box");
-                taskContainer.appendChild(descriptionTitle);
-                taskContainer.appendChild(descriptionBox);
+                if (taskContainer.childNodes.length==5){
+                    taskContainer.removeChild(taskContainer.lastChild);
+                    taskContainer.removeChild(taskContainer.lastChild);
+                }
+                else{
+                    taskContainer.appendChild(descriptionTitle);
+                    taskContainer.appendChild(descriptionBox);
+                }               
             });
             deleteButton.addEventListener("click", ()=>{
                 storage.removeTask(storage._selectedProjectIndex, i);
