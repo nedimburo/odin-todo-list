@@ -255,13 +255,14 @@
 }
 
 #task-list-container{
-    display: grid;
-    grid-auto-rows: 50px;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
 .task-container,
 .home-task-list-container{
+    height: 50px;
     background-color: #e5e7eb;
     border: 2px solid black;
     border-radius: 10px;
@@ -286,7 +287,8 @@
 
 .task-container-title,
 .task-container-date,
-.home-task-list-container div{
+.home-task-list-container div,
+.task-container-description{
     align-self: center;
     font-weight: 700;
     font-size: 1.4rem;
@@ -294,6 +296,22 @@
 
 .task-container-title{
     padding-left: 15px;
+}
+
+.task-container-description{
+    justify-self: center;
+}
+
+.task-container-description-box{
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+    padding: 5px;
+    border: 2px solid black;
+    font-weight: 700;
+    font-size: 1.4rem;
+    font-style: italic;
+    display: flex;
+    align-items: center;
 }
 
 .task-button-container>button>img:hover{
@@ -338,4 +356,9 @@
 #author-link:hover{
     text-decoration: underline;
     color: blue;
+}
+
+.bigger-task-container{
+    height: 200px;
+    grid-template-rows: 50px 1fr;
 }

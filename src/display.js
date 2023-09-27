@@ -273,6 +273,22 @@ const displayController=(()=>{
             moreButton.appendChild(moreImg);
             editButton.appendChild(editImg);
             deleteButton.appendChild(deleteImg);
+            moreButton.addEventListener("click", ()=>{
+                taskContainer.classList.toggle("bigger-task-container");
+                let descriptionTitle=document.createElement("div");
+                descriptionTitle.textContent="Description:";
+                descriptionTitle.classList.add("task-container-description");
+                let descriptionBox=document.createElement("div");
+                if (storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[i]._description==""){
+                    descriptionBox.textContent="No description assigned for this task.";
+                }
+                else{
+                    descriptionBox.textContent=storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[i]._description;
+                }
+                descriptionBox.classList.add("task-container-description-box");
+                taskContainer.appendChild(descriptionTitle);
+                taskContainer.appendChild(descriptionBox);
+            });
             deleteButton.addEventListener("click", ()=>{
                 storage.removeTask(storage._selectedProjectIndex, i);
                 updateTasksList();
