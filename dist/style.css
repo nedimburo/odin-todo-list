@@ -212,7 +212,8 @@
     grid-row: 2 / 3;
 }
 
-#add-task-container label{
+#add-task-container label,
+.task-container-edit-form-container label{
     font-size: 1.6rem;
     font-weight: 700;
     padding-right: 10px;
@@ -316,7 +317,7 @@
 .task-container-edit-form-container{
     grid-column: 1 / 4;
     grid-row: 2 / 3;
-    border: 2px solid black;
+    padding-left: 20px;
 }
 
 .task-button-container>button>img:hover{
@@ -370,7 +371,7 @@
 }
 
 .edit-task-container{
-    height: 250px;
+    height: 300px;
     grid-template-rows: 50px 1fr;
     row-gap: 10px;
 }

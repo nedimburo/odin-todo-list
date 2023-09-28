@@ -299,6 +299,32 @@ const displayController=(()=>{
                 taskContainer.classList.toggle("edit-task-container");
                 let editTaskFormContainer=document.createElement("div");
                 editTaskFormContainer.classList.add("task-container-edit-form-container");
+                let formDesign=`<label for="task-title">Title:</label>
+                        <input type="text" id="task-title" class="form-input"><br>
+                        <label for="task-description">Description:</label>
+                        <input type="text" id="task-description" class="form-input" placeholder="(optional)"><br>
+                        <label for="task-date">Due Date:</label>
+                        <input type="date" id="task-date" class="form-input"><br>
+                        <label for="task-priority">Priority:</label>
+                        <select id="task-priority" class="form-input">
+                            <option value="3">Low</option>
+                            <option value="2">Medium</option>
+                            <option value="1">High</option>
+                        </select>`;
+                editTaskFormContainer.innerHTML=formDesign;
+                let controlButtonsContainer=document.createElement("div");
+                let editButton=document.createElement("button");
+                let cancelButton=document.createElement("button");
+                editButton.textContent="Edit";
+                cancelButton.textContent="Cancel";
+                controlButtonsContainer.setAttribute("id", "control-buttons-container");
+                editButton.classList.add("task-buttons");
+                cancelButton.classList.add("task-buttons");
+                editButton.classList.add("submit");
+                cancelButton.classList.add("cancel");
+                controlButtonsContainer.appendChild(editButton);
+                controlButtonsContainer.appendChild(cancelButton);
+                editTaskFormContainer.appendChild(controlButtonsContainer);
                 if (taskContainer.childNodes.length==4){
                     taskContainer.removeChild(taskContainer.lastChild);
                 }
