@@ -95,7 +95,7 @@ const displayController=(()=>{
         for (let i=0; i<storage.todoContainer._projects.length; i++){
             for (let j=0; j<storage.todoContainer._projects[i]._tasks.length; j++){
                 var tempDate=parseISO(storage.todoContainer._projects[i]._tasks[j]._dueDate);
-                if (differenceInCalendarDays(tempDate, new Date())<=7){
+                if (differenceInCalendarDays(tempDate, new Date())<=7 && differenceInCalendarDays(tempDate, new Date())>=0){
                     let homeTaskContainer=document.createElement("div");
                     let homeTaskTitle=document.createElement("div");
                     let homeTaskDate=document.createElement("div");

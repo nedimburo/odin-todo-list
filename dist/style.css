@@ -306,13 +306,11 @@
 .task-container-description-box{
     grid-column: 2 / 4;
     grid-row: 2 / 3;
-    padding: 5px;
-    border: 2px solid black;
     font-weight: 700;
     font-size: 1.4rem;
     font-style: italic;
     display: flex;
-    align-items: center;
+    overflow-y: scroll;
 }
 
 .task-button-container>button>img:hover{
@@ -362,4 +360,5 @@
 .bigger-task-container{
     height: 200px;
     grid-template-rows: 50px 1fr;
+    row-gap: 10px;
 }
