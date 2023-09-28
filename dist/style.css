@@ -313,6 +313,12 @@
     overflow-y: scroll;
 }
 
+.task-container-edit-form-container{
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+    border: 2px solid black;
+}
+
 .task-button-container>button>img:hover{
     background-color: darkgray;
     border-radius: 50%;
@@ -359,6 +365,12 @@
 
 .bigger-task-container{
     height: 200px;
+    grid-template-rows: 50px 1fr;
+    row-gap: 10px;
+}
+
+.edit-task-container{
+    height: 250px;
     grid-template-rows: 50px 1fr;
     row-gap: 10px;
 }

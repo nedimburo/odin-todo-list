@@ -295,6 +295,17 @@ const displayController=(()=>{
                     taskContainer.appendChild(descriptionBox);
                 }               
             });
+            editButton.addEventListener("click", ()=>{
+                taskContainer.classList.toggle("edit-task-container");
+                let editTaskFormContainer=document.createElement("div");
+                editTaskFormContainer.classList.add("task-container-edit-form-container");
+                if (taskContainer.childNodes.length==4){
+                    taskContainer.removeChild(taskContainer.lastChild);
+                }
+                else{
+                    taskContainer.appendChild(editTaskFormContainer);
+                }
+            });
             deleteButton.addEventListener("click", ()=>{
                 storage.removeTask(storage._selectedProjectIndex, i);
                 updateTasksList();
