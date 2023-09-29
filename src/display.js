@@ -290,6 +290,12 @@ const displayController=(()=>{
                     taskContainer.removeChild(taskContainer.lastChild);
                     taskContainer.removeChild(taskContainer.lastChild);
                 }
+                else if (taskContainer.childNodes.length==4){
+                    taskContainer.classList.toggle("edit-task-container");
+                    taskContainer.removeChild(taskContainer.lastChild);
+                    taskContainer.appendChild(descriptionTitle);
+                    taskContainer.appendChild(descriptionBox);
+                }
                 else{
                     taskContainer.appendChild(descriptionTitle);
                     taskContainer.appendChild(descriptionBox);
@@ -327,6 +333,12 @@ const displayController=(()=>{
                 editTaskFormContainer.appendChild(controlButtonsContainer);
                 if (taskContainer.childNodes.length==4){
                     taskContainer.removeChild(taskContainer.lastChild);
+                }
+                else if (taskContainer.childNodes.length==5){
+                    taskContainer.classList.toggle("bigger-task-container");
+                    taskContainer.removeChild(taskContainer.lastChild);
+                    taskContainer.removeChild(taskContainer.lastChild);
+                    taskContainer.appendChild(editTaskFormContainer);
                 }
                 else{
                     taskContainer.appendChild(editTaskFormContainer);
