@@ -328,6 +328,10 @@ const displayController=(()=>{
                 cancelButton.classList.add("task-buttons");
                 editButton.classList.add("submit");
                 cancelButton.classList.add("cancel");
+                cancelButton.addEventListener("click", ()=>{
+                    taskContainer.classList.toggle("edit-task-container");
+                    taskContainer.removeChild(taskContainer.lastChild);
+                });
                 controlButtonsContainer.appendChild(editButton);
                 controlButtonsContainer.appendChild(cancelButton);
                 editTaskFormContainer.appendChild(controlButtonsContainer);
