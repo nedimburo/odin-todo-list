@@ -299,14 +299,14 @@ const displayController=(()=>{
                 taskContainer.classList.toggle("edit-task-container");
                 let editTaskFormContainer=document.createElement("div");
                 editTaskFormContainer.classList.add("task-container-edit-form-container");
-                let formDesign=`<label for="task-title">Title:</label>
-                        <input type="text" id="task-title" class="form-input"><br>
-                        <label for="task-description">Description:</label>
-                        <input type="text" id="task-description" class="form-input" placeholder="(optional)"><br>
-                        <label for="task-date">Due Date:</label>
-                        <input type="date" id="task-date" class="form-input"><br>
-                        <label for="task-priority">Priority:</label>
-                        <select id="task-priority" class="form-input">
+                let formDesign=`<label for="task-title-${i}">Title:</label>
+                        <input type="text" id="task-title-${i}" class="form-input"><br>
+                        <label for="task-description-${i}">Description:</label>
+                        <input type="text" id="task-description-${i}" class="form-input" placeholder="(optional)"><br>
+                        <label for="task-date-${i}">Due Date:</label>
+                        <input type="date" id="task-date-${i}" class="form-input"><br>
+                        <label for="task-priority-${i}">Priority:</label>
+                        <select id="task-priority-${i}" class="form-input">
                             <option value="3">Low</option>
                             <option value="2">Medium</option>
                             <option value="1">High</option>
@@ -332,6 +332,9 @@ const displayController=(()=>{
                     taskContainer.appendChild(editTaskFormContainer);
                 }
             });
+            editButton.addEventListener("click", ()=>{
+                assignBaseValues(i);
+            });
             deleteButton.addEventListener("click", ()=>{
                 storage.removeTask(storage._selectedProjectIndex, i);
                 updateTasksList();
@@ -350,6 +353,16 @@ const displayController=(()=>{
             message.classList.add("task-message");
             taskListContainer.appendChild(message);
         }
+    };
+    const assignBaseValues=index=>{
+        let baseTitle=document.getElementById(`task-title-${index}`);
+        let baseDescription=document.getElementById(`task-description-${index}`);
+        let baseDueDate=document.getElementById(`task-date-${index}`);
+        let basePriority=document.getElementById(`task-priority-${index}`);
+        baseTitle.value=storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[index]._title;
+        baseDescription.value=storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[index]._description;
+        baseDueDate.value=storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[index]._dueDate;
+        basePriority.value=storage._todoContainer._projects[storage._selectedProjectIndex]._tasks[index]._priority;
     };
     const addTaskButton=()=>{
         let addTaskButton=document.createElement("button");
