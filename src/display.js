@@ -1,5 +1,5 @@
 import Storage from "./storage";
-import { parseISO, differenceInCalendarDays, getMonth } from "date-fns";
+import { parseISO, differenceInCalendarDays, getMonth, startOfDay } from "date-fns";
 
 let storage=new Storage();
 
@@ -328,6 +328,16 @@ const displayController=(()=>{
                 cancelButton.classList.add("task-buttons");
                 editButton.classList.add("submit");
                 cancelButton.classList.add("cancel");
+                editButton.addEventListener("click", ()=>{
+                    let taskData={};
+                    taskData.title=document.getElementById(`task-title-${i}`).value;
+                    taskData.description=document.getElementById(`task-description-${i}`).value;
+                    taskData.dueDate=document.getElementById(`task-date-${i}`).value;
+                    taskData.priority=document.getElementById(`task-priority-${i}`).value;
+                    storage.editTask(taskData, i);
+                    storage.storeLocalStorage();
+                    updateTasksList();
+                });
                 cancelButton.addEventListener("click", ()=>{
                     taskContainer.classList.toggle("edit-task-container");
                     taskContainer.removeChild(taskContainer.lastChild);

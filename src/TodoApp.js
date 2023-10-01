@@ -23,4 +23,11 @@ export default class TodoApp{
     addTaskToProject(newTask, targetedProject){
         this.projects[targetedProject]._tasks.push(newTask);
     }
+
+    editTaskData(taskData, projectIndex, taskIndex){
+        this.projects[projectIndex]._tasks[taskIndex]._title=taskData.title;
+        this.projects[projectIndex]._tasks[taskIndex]._description=taskData.description;
+        this.projects[projectIndex]._tasks[taskIndex]._dueDate=taskData.dueDate;
+        this.projects[projectIndex]._tasks[taskIndex]._priority=taskData.priority;
+    }
 }
