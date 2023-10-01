@@ -465,12 +465,21 @@ const displayController=(()=>{
         todoContainer.classList.toggle("todo-container-simple");
         todoContainer.classList.toggle("todo-container-adding-task");
     };
+    const assignPageButtons=()=>{
+        let homeButton=document.getElementById("home-button");
+        homeButton.addEventListener("click", loadHome);
+        let todayButton=document.getElementById("today-button");
+        todayButton.addEventListener("click", loadToday);
+        let thisWeekButton=document.getElementById("week-button");
+        thisWeekButton.addEventListener("click", loadThisWeek);
+        let thisMonthButton=document.getElementById("month-button");
+        thisMonthButton.addEventListener("click", loadThisMonth);
+        let addProjectButton=document.getElementById("add-project-button");
+        addProjectButton.addEventListener("click", addProjectInput);
+    };
     return{
         loadHome,
-        loadToday,
-        loadThisWeek,
-        loadThisMonth,
-        addProjectInput,
+        assignPageButtons,
         generateProjects,
         generateProjectButtons,
     }
@@ -482,14 +491,5 @@ export default function initializeWebsite(){
     displayController.loadHome();
     displayController.generateProjects();
     displayController.generateProjectButtons();
-    let homeButton=document.getElementById("home-button");
-    homeButton.addEventListener("click", displayController.loadHome);
-    let todayButton=document.getElementById("today-button");
-    todayButton.addEventListener("click", displayController.loadToday);
-    let thisWeekButton=document.getElementById("week-button");
-    thisWeekButton.addEventListener("click", displayController.loadThisWeek);
-    let thisMonthButton=document.getElementById("month-button");
-    thisMonthButton.addEventListener("click", displayController.loadThisMonth);
-    let addProjectButton=document.getElementById("add-project-button");
-    addProjectButton.addEventListener("click", displayController.addProjectInput);
+    displayController.assignPageButtons();
 }
