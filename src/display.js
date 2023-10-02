@@ -352,6 +352,14 @@ const displayController=(()=>{
                     taskData.description=document.getElementById(`task-description-${i}`).value;
                     taskData.dueDate=document.getElementById(`task-date-${i}`).value;
                     taskData.priority=document.getElementById(`task-priority-${i}`).value;
+                    if (taskData.title==""){
+                        alert("Title can't be blank. Please enter new title.");
+                        return;
+                    }
+                    if (taskData.dueDate==""){
+                        alert("Due date can't be blank. Please select new due date.");
+                        return;
+                    }
                     storage.editTask(taskData, i);
                     storage.storeLocalStorage();
                     updateTasksList();
