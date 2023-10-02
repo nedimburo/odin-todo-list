@@ -377,7 +377,9 @@ const displayController=(()=>{
                 }
             });
             editButton.addEventListener("click", ()=>{
-                assignBaseValues(i);
+                if (taskContainer.classList.contains("edit-task-container")){
+                    assignBaseValues(i);
+                }
             });
             deleteButton.addEventListener("click", ()=>{
                 storage.removeTask(storage._selectedProjectIndex, i);
