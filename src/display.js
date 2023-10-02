@@ -515,7 +515,6 @@ const displayController=(()=>{
 
 export default function initializeWebsite(){
     storage.getLocalStorage();
-    console.log(storage.todoContainer);
     displayController.loadHome();
     displayController.generateProjects();
     displayController.generateProjectButtons();
