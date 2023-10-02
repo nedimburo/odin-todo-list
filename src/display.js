@@ -83,6 +83,12 @@ const displayController=(()=>{
                 }
             }
         }
+        if (taskListContainer.childNodes.length==0){
+            let message=document.createElement("h2");
+            message.textContent="No tasks have been assigned for today.";
+            message.classList.add("task-message");
+            taskListContainer.appendChild(message);
+        }
     };
     const loadThisWeek=()=>{
         todoContainer.innerHTML="";
@@ -119,6 +125,12 @@ const displayController=(()=>{
                     taskListContainer.appendChild(homeTaskContainer);
                 }
             }
+        }
+        if (taskListContainer.childNodes.length==0){
+            let message=document.createElement("h2");
+            message.textContent="No tasks have been assigned for this week.";
+            message.classList.add("task-message");
+            taskListContainer.appendChild(message);
         }
     };
     const loadThisMonth=()=>{
@@ -157,6 +169,12 @@ const displayController=(()=>{
                     taskListContainer.appendChild(homeTaskContainer);
                 }
             }
+        }
+        if (taskListContainer.childNodes.length==0){
+            let message=document.createElement("h2");
+            message.textContent="No tasks have been assigned for the ongoing month.";
+            message.classList.add("task-message");
+            taskListContainer.appendChild(message);
         }
     };
     const addProjectInput=()=>{
